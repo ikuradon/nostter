@@ -26,13 +26,17 @@
 		console.debug('[twitter]', twitterWidget);
 		window.twttr?.widgets.load(twitterWidget);
 	}
+
+	let currentTheme = localStorage.getItem('nostter:theme') || 'system';
+	if (currentTheme === 'system')
+		currentTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 </script>
 
 {#if link === undefined}
 	<Text {text} />
 {:else if link.origin === 'https://twitter.com' || link.origin === 'https://x.com'}
 	<div bind:this={twitterWidget}>
-		<blockquote class="twitter-tweet">
+		<blockquote class="twitter-tweet" data-theme={currentTheme}>
 			<a
 				href={link.href.replace('x.com', 'twitter.com')}
 				target="_blank"

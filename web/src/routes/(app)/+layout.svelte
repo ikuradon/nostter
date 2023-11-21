@@ -119,9 +119,21 @@
 				if (e.matches) {
 					console.log('[theme system]', 'dark');
 					document.documentElement.classList.add('dark');
+
+					let tweets = document.querySelectorAll('[data-tweet-id]');
+					tweets.forEach((tweet) => {
+						let src = tweet.getAttribute('src') ?? '';
+						tweet.setAttribute('src', src.replace('theme=light', 'theme=dark'));
+					});
 				} else {
 					console.log('[theme system]', 'light');
 					document.documentElement.classList.remove('dark');
+
+					let tweets = document.querySelectorAll('[data-tweet-id]');
+					tweets.forEach((tweet) => {
+						let src = tweet.getAttribute('src') ?? '';
+						tweet.setAttribute('src', src.replace('theme=dark', 'theme=light'));
+					});
 				}
 			});
 	}
