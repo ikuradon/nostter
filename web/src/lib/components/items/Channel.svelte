@@ -9,6 +9,7 @@
 	import { Channel } from '$lib/Channel';
 	import { findChannelId } from '$lib/EventHelper';
 	import OnelineProfile from '../profile/OnelineProfile.svelte';
+	import { createImgProxyUrl } from '$lib/ImgProxy';
 
 	export let item: Item;
 
@@ -48,7 +49,7 @@
 <article class="timeline-item">
 	<main>
 		{#if channelMetadata?.picture !== undefined}
-			<img src={channelMetadata.picture} alt="" />
+			<img src={createImgProxyUrl(channelMetadata.picture, 128)} alt="" />
 		{/if}
 		<div class="channel">
 			<h1>

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { metadataStore } from '$lib/cache/Events';
 	import { robohash } from '$lib/Items';
+	import { createImgProxyUrl } from '$lib/ImgProxy';
 
 	export let pubkey: string;
 	export let width = '100%';
@@ -17,7 +18,7 @@
 </script>
 
 <img
-	src={metadata?.picture ?? robohash(pubkey)}
+	src={createImgProxyUrl(metadata?.picture ?? robohash(pubkey), 128)}
 	alt={name}
 	title={tooltip ? name : ''}
 	style="width: {width}; height: {height};"

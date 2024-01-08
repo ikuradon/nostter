@@ -11,6 +11,7 @@
 	import { pool } from '$lib/stores/Pool';
 	import MediaPicker from '$lib/components/MediaPicker.svelte';
 	import ModalDialog from '$lib/components/ModalDialog.svelte';
+	import {createImgProxyUrl} from '$lib/ImgProxy';
 
 	//#region Cropper
 
@@ -175,7 +176,7 @@
 			<MediaPicker on:pick={picturePicked} />
 		</div>
 		{#if $authorProfile.picture}
-			<img src={$authorProfile.picture} alt="preview" />
+			<img src={createImgProxyUrl($authorProfile.picture, 128)} alt="preview" />
 		{/if}
 	</div>
 	<div class="banner">
@@ -190,7 +191,7 @@
 			<MediaPicker on:pick={bannerPicked} />
 		</div>
 		{#if $authorProfile.banner}
-			<img src={$authorProfile.banner} alt="preview" />
+			<img src={createImgProxyUrl($authorProfile.banner)} alt="preview" />
 		{/if}
 	</div>
 	<div class="name">

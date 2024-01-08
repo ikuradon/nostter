@@ -23,6 +23,7 @@
 	import ProfileMenuButton from '$lib/components/ProfileMenuButton.svelte';
 	import ProfileIcon from '$lib/components/profile/ProfileIcon.svelte';
 	import { goto } from '$app/navigation';
+	import { createImgProxyUrl } from '$lib/ImgProxy';
 
 	export let slug: string;
 	export let pubkey: string;
@@ -81,7 +82,7 @@
 
 <div class="banner">
 	{#if user?.banner}
-		<img src={user.banner} alt="" />
+		<img src={createImgProxyUrl(user.banner, 1000)} alt="" />
 	{:else}
 		<div class="blank" />
 	{/if}

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Event } from 'nostr-typedef';
 	import { getTagContent } from '$lib/EventHelper';
+	import { createImgProxyUrl } from '$lib/ImgProxy';
 
 	export let event: Event;
 
@@ -10,7 +11,7 @@
 </script>
 
 <article>
-	<img src={url} alt="" />
+	<img src={createImgProxyUrl(url, 128)} alt="" />
 	<main>
 		<h2>{name}</h2>
 		<p>{description}</p>

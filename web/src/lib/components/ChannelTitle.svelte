@@ -1,11 +1,12 @@
 <script lang="ts">
 	import type { ChannelMetadata } from '$lib/Types';
+	import {createImgProxyUrl} from '$lib/ImgProxy';
 
 	export let channelMetadata: ChannelMetadata | undefined;
 </script>
 
 <div>
-	<img src={channelMetadata?.picture} alt="" />
+	<img src={createImgProxyUrl(channelMetadata?.picture)} alt="" />
 	<span>{channelMetadata?.name ?? ''}</span>
 </div>
 

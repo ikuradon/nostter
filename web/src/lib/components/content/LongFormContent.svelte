@@ -3,6 +3,7 @@
 	import { intentContent, openNoteDialog } from '$lib/stores/NoteDialog';
 	import IconCodeDots from '@tabler/icons-svelte/icons/code-dots';
 	import IconQuote from '@tabler/icons-svelte/icons/quote';
+	import {createImgProxyUrl} from '$lib/ImgProxy';
 
 	export let naddr: string;
 	export let event: Event;
@@ -27,7 +28,7 @@
 <article class="timeline-item">
 	<main>
 		{#if image !== undefined}
-			<img src={image} alt="" />
+			<img src={createImgProxyUrl(image)} alt="" />
 		{/if}
 		<div class="content">
 			<h1>{title ?? '-'}</h1>

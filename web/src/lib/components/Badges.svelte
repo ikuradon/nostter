@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Badge } from '$lib/BadgeApi';
+	import { createImgProxyUrl } from '$lib/ImgProxy';
 
 	export let badges: Badge[];
 </script>
@@ -9,7 +10,7 @@
 		<li>
 			<a href="https://badges.page/a/{badge.naddr}" target="_blank" rel="noreferrer">
 				<img
-					src={badge.thumb ? badge.thumb : badge.image}
+					src={createImgProxyUrl(badge.thumb ? badge.thumb : badge.image, 128)}
 					alt={badge.name}
 					title={badge.name}
 				/>
