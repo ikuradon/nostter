@@ -5,6 +5,7 @@
 	import { lastNotesMap } from '$lib/stores/LastNotes';
 	import Content from '$lib/components/Content.svelte';
 	import type { Metadata } from '$lib/Items';
+	import { createImgProxyUrl } from '$lib/ImgProxy';
 
 	export let metadata: Metadata;
 
@@ -14,7 +15,7 @@
 <article class="timeline-item">
 	<div>
 		<a href="/{nip19.npubEncode(metadata.event.pubkey)}">
-			<img class="picture" src={metadata.content?.picture} alt="" />
+			<img class="picture" src={createImgProxyUrl(metadata.content?.picture)} alt="" />
 		</a>
 	</div>
 	<div class="text">

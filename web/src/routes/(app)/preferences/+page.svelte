@@ -9,6 +9,7 @@
 	import { developerMode } from '$lib/stores/Preference';
 	import WordMute from './WordMute.svelte';
 	import AutoRefresh from './AutoRefresh.svelte';
+	import ImageProxy from './ImageProxy.svelte';
 	import MutedUsers from './MutedUsers.svelte';
 	import MutedEvents from './MutedEvents.svelte';
 	import ClearEmojiMartCache from './ClearEmojiMartCache.svelte';
@@ -69,6 +70,7 @@
 	<div><Theme /></div>
 	<div><AutoRefresh /></div>
 	<div><EnablePreview /></div>
+	<div><ImageProxy /></div>
 	<div><Notification /></div>
 	<div><UriScheme /></div>
 	<div><WalletConnect /></div>

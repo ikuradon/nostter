@@ -9,6 +9,7 @@
 	import { pubkey, author, authorProfile, metadataEvent, writeRelays } from '$lib/stores/Author';
 	import { pool } from '$lib/stores/Pool';
 	import MediaPicker from '$lib/components/MediaPicker.svelte';
+	import {createImgProxyUrl} from '$lib/ImgProxy';
 
 	async function picturePicked({ detail: files }: { detail: FileList }): Promise<void> {
 		console.log('[profile picture]', files);
@@ -91,7 +92,7 @@
 			<MediaPicker on:pick={picturePicked} />
 		</div>
 		{#if $authorProfile.picture}
-			<img src={$authorProfile.picture} alt="preview" />
+			<img src={createImgProxyUrl($authorProfile.picture, 128)} alt="preview" />
 		{/if}
 	</div>
 	<div class="banner">
@@ -106,7 +107,7 @@
 			<MediaPicker on:pick={bannerPicked} />
 		</div>
 		{#if $authorProfile.banner}
-			<img src={$authorProfile.banner} alt="preview" />
+			<img src={createImgProxyUrl($authorProfile.banner)} alt="preview" />
 		{/if}
 	</div>
 	<div class="name">

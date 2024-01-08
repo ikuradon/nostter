@@ -4,6 +4,7 @@
 	import { metadataStore } from '$lib/cache/Events';
 	import UserStatus from './UserStatus.svelte';
 	import CreatedAt from './CreatedAt.svelte';
+	import { createImgProxyUrl } from '$lib/ImgProxy';
 
 	export let item: Item;
 	export let createdAtFormat: 'auto' | 'time' = 'auto';
@@ -15,7 +16,11 @@
 <article class="timeline-item">
 	<div>
 		<a href="/{nip19.npubEncode(item.event.pubkey)}">
-			<img class="picture" src={metadata?.picture ?? robohash(item.event.pubkey)} alt="" />
+			<img
+				class="picture"
+				src={createImgProxyUrl(metadata?.picture ?? robohash(item.event.pubkey), 128)}
+				alt=""
+			/>
 		</a>
 		<div class="icon">
 			<slot name="icon" />

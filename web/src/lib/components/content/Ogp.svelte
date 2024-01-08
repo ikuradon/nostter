@@ -3,6 +3,8 @@
 </script>
 
 <script lang="ts">
+	import { createImgProxyUrl } from '$lib/ImgProxy';
+
 	export let url: URL;
 
 	$: ogp = cache.get(url.href);
@@ -89,9 +91,9 @@
 		<blockquote>
 			{#if ogp['og:image']}
 				{#if ogp['og:image'].startsWith('https://')}
-					<img src={ogp['og:image']} alt={url.href} />
+					<img src={createImgProxyUrl(ogp['og:image'], 500)} alt={url.href} />
 				{:else}
-					<img src={new URL(url.href).origin + ogp['og:image']} alt={url.href} />
+					<img src={createImgProxyUrl(new URL(url.href).origin + ogp['og:image'], 500)} alt={url.href} />
 				{/if}
 			{/if}
 			<h1>{ogp['og:title']}</h1>

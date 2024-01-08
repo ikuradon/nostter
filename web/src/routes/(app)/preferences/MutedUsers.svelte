@@ -8,6 +8,7 @@
 	import { mutePubkeys, writeRelays } from '$lib/stores/Author';
 	import { pool } from '$lib/stores/Pool';
 	import IconTrash from '@tabler/icons-svelte/dist/svelte/icons/IconTrash.svelte';
+	import { createImgProxyUrl } from '$lib/ImgProxy';
 
 	let metadataEvents = new Map<string, Event>();
 	let unmuting = false;
@@ -40,7 +41,7 @@
 		{@const metadata = metadataEvent === undefined ? undefined : new Metadata(metadataEvent)}
 		<li>
 			<a href="/{nip19.npubEncode(pubkey)}">
-				<img src={metadata?.content?.picture} alt="" title="" />
+				<img src={createImgProxyUrl(metadata?.content?.picture, 128)} alt="" title="" />
 				<span>
 					{metadata?.content?.name ??
 						nip19.npubEncode(pubkey).slice(0, 'npub1'.length + 7)}

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { createImgProxyUrl } from '$lib/ImgProxy';
 	import { robohash, type Metadata } from '$lib/Items';
 
 	export let metadata: Metadata;
@@ -7,7 +8,7 @@
 </script>
 
 <img
-	src={metadata.picture ?? robohash(metadata.event.pubkey)}
+	src={createImgProxyUrl(metadata.picture ?? robohash(metadata.event.pubkey), 128)}
 	alt=""
 	style="width: {width}; height: {height};"
 />

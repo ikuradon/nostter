@@ -23,6 +23,7 @@
 	import IconTool from '@tabler/icons-svelte/dist/svelte/icons/IconTool.svelte';
 	import IconLink from '@tabler/icons-svelte/dist/svelte/icons/IconLink.svelte';
 	import ProfileMenuButton from '$lib/components/ProfileMenuButton.svelte';
+	import { createImgProxyUrl } from '$lib/ImgProxy';
 
 	export let slug: string;
 	export let pubkey: string;
@@ -81,7 +82,7 @@
 
 <div class="banner">
 	{#if user?.banner}
-		<img src={user.banner} alt="" />
+		<img src={createImgProxyUrl(user.banner, 1000)} alt="" />
 	{:else}
 		<div class="blank" />
 	{/if}
@@ -90,7 +91,7 @@
 	<div class="profile">
 		<div class="actions">
 			<div class="picture-wrapper">
-				<img src={metadata?.picture ?? robohash(pubkey)} alt="" />
+				<img src={createImgProxyUrl(metadata?.picture ?? robohash(pubkey), 128)} alt="" />
 			</div>
 			<div class="buttons">
 				{#if !$rom && pubkey !== undefined}

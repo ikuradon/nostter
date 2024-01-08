@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Event } from 'nostr-tools';
+	import { createImgProxyUrl } from '$lib/ImgProxy';
 
 	export let event: Event;
 
@@ -13,7 +14,7 @@
 
 {#if mimeType !== undefined && /image\/(gif|jpg|jpeg|png|webp|bmp)/.test(mimeType)}
 	<a href={url} target="_blank" rel="noopener noreferrer">
-		<img src={url} alt={event.content} />
+		<img src={createImgProxyUrl(url, 640)} alt={event.content} />
 	</a>
 {:else}
 	<a href={url} target="_blank" rel="noopener noreferrer">{url}</a>

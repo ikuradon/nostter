@@ -13,6 +13,7 @@
 	import Text from './Text.svelte';
 	import ExternalLink from '$lib/components/ExternalLink.svelte';
 	import YouTube from '$lib/components/content/YouTube.svelte';
+	import { createImgProxyUrl } from '$lib/ImgProxy';
 
 	export let text: string;
 	export let url: string | undefined = undefined;
@@ -56,7 +57,7 @@
 	{#if preview}
 		<div>
 			<a href={link.href} target="_blank" rel="noopener noreferrer">
-				<img src={link.href} alt={link.href} />
+				<img src={createImgProxyUrl(link.href, 640)} alt={link.href} />
 			</a>
 		</div>
 	{:else}
